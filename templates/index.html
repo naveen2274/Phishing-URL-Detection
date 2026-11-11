@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PhishGuard | URL Security Scanner</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">🛡</div>
+            <h2>PhishGuard</h2>
+        </div>
+
+        <p class="menu-label">MAIN MENU</p>
+
+        <nav>
+            <a href="#" class="nav-link active">▦ Dashboard</a>
+            <a href="#scanner" class="nav-link">⌕ URL Scanner</a>
+            <a href="#history" class="nav-link">◷ Scan History</a>
+            <a href="#analytics" class="nav-link">▥ Analytics</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="security-status">
+                <span class="status-dot"></span>
+                Security System
+                <strong>Ready</strong>
+            </div>
+            <p>PhishGuard v1.0</p>
+        </div>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h1>Security Dashboard</h1>
+                <p>Monitor and detect suspicious website URLs.</p>
+            </div>
+
+            <div class="topbar-right">
+                <span class="live-status">
+                    <span class="status-dot"></span>
+                    System Online
+                </span>
+                <div class="profile">PG</div>
+            </div>
+        </header>
+
+        <!-- Statistics -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon blue">↗</div>
+                <p>Total URLs Scanned</p>
+                <h2 id="totalScans">0</h2>
+                <span>All-time scans</span>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon red">⚠</div>
+                <p>Phishing Detected</p>
+                <h2 id="phishingCount">0</h2>
+                <span>Threats identified</span>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon green">✓</div>
+                <p>Legitimate URLs</p>
+                <h2 id="legitimateCount">0</h2>
+                <span>Safe classifications</span>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon purple">◉</div>
+                <p>Detection Rate</p>
+                <h2 id="detectionRate">0%</h2>
+                <span>Of scanned URLs</span>
+            </div>
+
+        </section>
+
+        <!-- Scanner -->
+        <section class="scanner-section" id="scanner">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Website Security Scanner</h2>
+                    <p>Enter a URL to check whether it is suspicious.</p>
+                </div>
+                <span class="ai-badge">✦ AI Powered</span>
+            </div>
+
+            <form id="scanForm">
+
+                <label for="urlInput">Website URL</label>
+
+                <div class="input-group">
+                    <span>🔗</span>
+                    <input
+                        type="text"
+                        id="urlInput"
+                        placeholder="https://example.com"
+                        required
+                    >
+                    <button type="submit" id="scanButton">
+                        Scan URL →
+                    </button>
+                </div>
+
+                <p class="input-hint">
+                    Enter the complete website URL you want to analyze.
+                </p>
+
+            </form>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                Analyzing URL...
+            </div>
+
+            <div id="resultBox" class="result-box hidden">
+                <h3 id="resultTitle"></h3>
+                <p id="resultMessage"></p>
+                <p id="confidence"></p>
+            </div>
+
+        </section>
+
+        <!-- Analytics -->
+        <section class="analytics-section" id="analytics">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Security Overview</h2>
+                    <p>Summary of URL scan activity.</p>
+                </div>
+            </div>
+
+            <div class="analytics-card">
+                <div class="analytics-placeholder">
+                    <div class="chart-symbol">▥</div>
+                    <h3>Scan Analytics</h3>
+                    <p>Charts will appear here once scan data is available.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- History -->
+        <section class="history-section" id="history">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Recent Scan History</h2>
+                    <p>Your latest URL security checks.</p>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Website URL</th>
+                            <th>Result</th>
+                            <th>Confidence</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="historyBody">
+                        <tr>
+                            <td colspan="4" class="empty-state">
+                                No scan history available yet.
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+        </section>
+
+        <footer>
+            PhishGuard © 2026 | AI-Based Phishing URL Detection System
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

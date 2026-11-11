@@ -1,0 +1,8 @@
+{
+    "model_name": "Random Forest",
+    "threshold": 0.5,
+    "phishing_label": 0,
+    "legitimate_label": 1,
+    "number_of_features": 23,
+    "validation": "Domain-based split"
+}
